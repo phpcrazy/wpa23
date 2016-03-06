@@ -10,6 +10,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<?php if($products != null) { ?>
 				<table class="table table-striped">
 				<thead>
 					<tr>
@@ -28,6 +29,9 @@
 				<?php } ?>
 				</tbody>
 				</table>
+				<?php } else { ?>
+					<h2>No Product Found</h2>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

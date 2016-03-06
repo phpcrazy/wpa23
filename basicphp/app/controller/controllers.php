@@ -2,26 +2,10 @@
 
 
 function HomeController() {
-
+	// db_get_all("products")
 	$data = [
-	'title'	=> 'Myanmar Links',
-	'products'	=> [
-			[
-				'id'	=> 1,
-				'name'	=> 'Applie',
-				'price'	=> 500,
-			],
-			[
-				'id'	=> 2,
-				'name'	=> 'Orange',
-				'price'	=> 500,
-			],
-			[
-				'id'	=> 3,
-				'name'	=> 'PineApple',
-				'price'	=> 500,
-			],
-		]
+		'title'		=> config_get("app.app_title"),
+		'products'	=> db_get_select("products", ['id','name', 'price']),
 	];
 
 	echo load_view("home", $data);
@@ -29,6 +13,7 @@ function HomeController() {
 }
 
 function BlogController() {
+
 	echo load_view("blog");
 }
 

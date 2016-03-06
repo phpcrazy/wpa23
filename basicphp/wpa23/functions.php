@@ -16,4 +16,11 @@ function load_view($view_file, $data = null) {
 	return ob_get_clean();
 }
 
- ?>
+function dump($data, $die = false) {
+	var_dump($data);
+	if($die) {
+		die();
+	}
+}
+
+?>

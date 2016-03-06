@@ -4,6 +4,7 @@
 define("DD", __DIR__ . "/..");
 
 require DD . "/wpa23/functions.php";
+require DD . "/wpa23/db.php";
 require DD . "/app/controller/controllers.php";
 
 
