@@ -12,7 +12,13 @@ function load_view($view_file, $data = null) {
 	if($data != null) {
 		extract($data);	
 	}
-	include DD . "/app/view/" . $view_file . ".php";
+	$ex_view = explode(".", $view_file);
+	if(count($ex_view) == 1) {
+		include DD . "/app/view/" . $ex_view[0] . ".php";
+	} else if(count($ex_view) == 2) {
+		include DD . "/app/view/" . $ex_view[0] . "/" . $ex_view[1] .  ".php";
+	}
+	
 	return ob_get_clean();
 }
 
@@ -21,6 +27,11 @@ function dump($data, $die = false) {
 	if($die) {
 		die();
 	}
+}
+
+function redirect($url) {
+	header("Location: " . config_get("app.site_url") . '/' . $url);
+	exit();
 }
 
 ?>
