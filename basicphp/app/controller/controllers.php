@@ -6,10 +6,10 @@
 
 function HomeController() {
 	// db_get_all("products")
-	$data = [
+	$data = array(
 		'title'		=> config_get("app.app_title"),
 		'blogs'		=> db_get_all("blogs"),
-	];
+	);
 
 	echo load_view("blog.index", $data);
 	
@@ -17,10 +17,10 @@ function HomeController() {
 
 function BlogController($action = null) {
 	if($action ==  null) {
-		$data = [
+		$data = array(
 			'title'		=> config_get("app.app_title"),
 			'blogs'		=> db_get_all("blogs"),
-		];
+		);
 
 		echo load_view("blog.index", $data);
 	} else {
@@ -28,10 +28,10 @@ function BlogController($action = null) {
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$title = htmlentities($_POST['title']);
 				$body = $_POST['body'];
-				$data = [
+				$data = array(
 					'title'	=> $title,
 					'body'	=> $body
-				];
+				);
     			db_insert("blogs", $data);
 
 
