@@ -52,4 +52,23 @@ function PageController() {
 	echo load_view("page");
 }
 
+function ProductController($action = null) {
+	if($action == null) {
+
+	} else {
+		if($action == 'create') {
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$product_name = $_POST['product_name'];
+				$product_quantity = $_POST['product_quantity'];
+				$product_category = explode(",", $_POST['product_category']);
+
+				var_dump($product_category);
+			}
+
+			echo load_view("product.create");
+		}
+	}
+	
+}
+
 ?>
