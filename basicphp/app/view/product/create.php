@@ -59,7 +59,7 @@
 					<div class="form-group">
 						<label for="product_category" class="col-sm-3 control-label">Product Category</label>
 						<div class="col-sm-9">
-							<input id="product_category" type="text" name="product_category" class="form-control" />	
+							<input id="product_category" type="text" name="product_category" value="<?php echo $category; ?>" class="form-control" />	
 						</div>	
 					</div>
 					

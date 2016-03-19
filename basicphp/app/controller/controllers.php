@@ -62,10 +62,21 @@ function ProductController($action = null) {
 				$product_quantity = $_POST['product_quantity'];
 				$product_category = explode(",", $_POST['product_category']);
 
-				var_dump($product_category);
+				$s_p_category = serialize($product_category);
+				var_dump($s_p_category);
+				var_dump(unserialize($s_p_category));
 			}
 
-			echo load_view("product.create");
+			$p_categroy = [
+				'device', 'apple', 'orange'
+			];
+
+			$i_category = implode(",", $p_categroy);
+			$data = [
+				'category' => $i_category
+			];
+
+			echo load_view("product.create", $data);
 		}
 	}
 	
