@@ -1,0 +1,6 @@
+{
+    "require": {
+        "nesbot/carbon": "^1.21",
+        "nette/mail": "^2.3"
+    }
+}
