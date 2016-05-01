@@ -1,72 +1,55 @@
 <?php
 
+interface AnimalInterface {
 
+    public function eat();
+}
 
-class Cat extends Animal {
-    public function __destruct()
+interface FooInterface {
+    public function bar();
+}
+
+trait Human // Design Pattern
+{
+
+    public function __construct()
     {
-        echo "Cat Destruct!";
+        echo "Yay! Constructor!";
     }
-    public function meon() {
-        echo "Meon!";
+
+    public $value = "Idiot!";
+
+    public function test()
+    {
+        echo "Testing!";
     }
 }
 
-abstract class Animal {
-    public $name;
-    public function __construct($name)
-    {
-        $this->name = $name;
+trait Yoo {
+    public function bro() {
+        echo "Howdy!";
     }
-    public function eat() {
-        echo "Eat!";
+}
+
+abstract class Animal implements AnimalInterface, FooInterface {
+    public function eat()
+    {
+    }
+    public function bar()
+    {
     }
 }
 
 class Dog extends Animal {
-
-    public $value = []; // array()
-
-    public function __construct($name)
-    {
-        parent::__construct($name);
-    }
-    public function __set($name, $value)
-    {
-        $this->value[$name] = $value;
-    }
-    public function __get($name)
-    {
-        return $this->value[$name];
-    }
-    public function bark() {
-        echo "Woof!";
-    }
-
-    public function __call($name, $arguments)
-    {
-        // TODO: Implement __call() method.
-        var_dump($name);
-        var_dump($arguments);
-    }
-
-    public static function __callStatic($name, $arguments)
-    {
-        var_dump($name);
-        var_dump($arguments);
-    }
-
-    public static function bite() {
-        echo "Bite!";
-    }
+    use Human;
+    use Yoo;
 }
-Dog::bite(); // :: scope resolution operator
-Dog::run("60KM/h", "Mad");
-die();
-$dog = new Dog("Aung Net", "red");
-$dog->name = "Aung Net";
-$dog->bark();
-$dog->color = "red";
-var_dump($dog->color);
-$dog->dance("Hip Hop");
-echo $dog->name;
+
+$dog = new Dog();
+
+$dog->eat();
+
+$dog->test();
+
+echo $dog->value;
+$dog->bro();
