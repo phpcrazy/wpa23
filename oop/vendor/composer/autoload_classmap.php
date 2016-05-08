@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Config' => $baseDir . '/wpa23/lib/ConfigLoader.php',
+    'DB' => $baseDir . '/wpa23/provider/DataProvider.php',
 );

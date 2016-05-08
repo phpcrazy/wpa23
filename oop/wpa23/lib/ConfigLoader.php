@@ -7,6 +7,10 @@
  */
 
 class Config {
+    /*
+     * Static Method
+     * Pattern - Library
+     */
     public static function get($config_data) {
         $e_value = explode(".", $config_data);
         $config = include DD . "/app/config/" . $e_value[0] . ".php";

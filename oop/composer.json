@@ -1,7 +1,8 @@
 {
   "autoload": {
     "classmap" : [
-      "wpa23/lib"
+      "wpa23/lib",
+      "wpa23/provider"
     ]
   }
 }
