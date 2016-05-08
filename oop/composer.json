@@ -1,0 +1,7 @@
+{
+  "autoload": {
+    "classmap" : [
+      "wpa23/lib"
+    ]
+  }
+}
