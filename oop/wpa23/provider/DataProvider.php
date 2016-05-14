@@ -21,7 +21,13 @@ class DB extends PDO{
     public $database;
     public $pass;
 
-    public $select_query = "SELECT * FROM ";
+
+    public $where_name;
+    public $where_value;
+    public $is_where;
+
+    // select * from $table_name where $name = $value
+    public $table_name;
 
 
     private static $_instance;
@@ -31,7 +37,10 @@ class DB extends PDO{
             self::$_instance = new DB();
         }
 
-        self::$_instance->select_query .= $table_name;
+        self::$_instance->table_name = $table_name;
+        self::$_instance->is_where = false;
+        self::$_instance->where_name = "";
+        self::$_instance->where_value = "";
 
         return self::$_instance;
     }
@@ -53,13 +62,42 @@ class DB extends PDO{
         echo "DB Instance Destroy!";
     }
 
-    public function get() {
-        $stmt = $this->prepare($this->select_query);
-        $stmt->execute();
+    public function where($name, $value) {
 
-        // set the resulting array to associative
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
+        $this->where_name = $name;
+        $this->where_value = $value;
+        $this->is_where = true;
+        return $this;
+
+    }
+
+    public function get() {
+
+        if($this->is_where == true) {
+
+            echo "Yay! is Where";
+
+            $sql  = 'SELECT * FROM ' . $this->table_name . " WHERE :" . $this->where_name
+                . " = " . $this->where_name;
+
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(":" . $this->where_name, $this->where_value);
+            $stmt->execute();
+            // set the resulting array to associative
+            $stmt->setFetchMode(PDO::FETCH_OBJ);
+            return $stmt->fetchAll();
+        } else {
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->prepare($sql);
+
+            $stmt->execute();
+            // set the resulting array to associative
+            $stmt->setFetchMode(PDO::FETCH_OBJ);
+            return $stmt->fetchAll();
+
+        }
+
+
 
     }
 }

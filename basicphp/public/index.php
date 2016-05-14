@@ -1,4 +1,4 @@
-<?php 
+.ht<?php 
 
 
 define("DD", __DIR__ . "/..");
