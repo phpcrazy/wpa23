@@ -8,4 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Config' => $baseDir . '/wpa23/lib/ConfigLoader.php',
     'DB' => $baseDir . '/wpa23/provider/DataProvider.php',
+    'DBReadConnection' => $baseDir . '/wpa23/provider/DBReadConnection.php',
+    'DBSingleton' => $baseDir . '/wpa23/provider/DBSingleton.php',
+    'DBWriteConnection' => $baseDir . '/wpa23/provider/DBWriteConnection.php',
 );

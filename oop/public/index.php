@@ -8,15 +8,28 @@ $app_title = Config::get("app.app_title");
 
 echo $app_title;
 
-$student = DB::table("students")->where("name", "Thiha")->get();
 
-$students = DB::table("students")->get();
+DBReadConnection::getInstance();
 
-$products = DB::table("products")->get();
+DBWriteConnection::getInstance();
 
-var_dump($student);
-var_dump($students);
-var_dump($products);
+//$student = DB::table("students")->where("name", "Thiha")->get();
+//
+//$students = DB::table("students")->get();
+//
+//$products = DB::table("products")->get();
+//
+//
+//DB::table("products")->insert([
+//   'name'   => 'iPhone SE',
+//    'price' => '600000'
+//]);
+//
+//// INSERT INTO students (name, price) VALUES (:name, :price)
+//
+//var_dump($student);
+//var_dump($students);
+//var_dump($products);
 
 
 // $products = DB::table("products")->get();
