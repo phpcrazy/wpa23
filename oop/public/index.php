@@ -8,10 +8,61 @@ $app_title = Config::get("app.app_title");
 
 echo $app_title;
 
+use Wpa23\App\Application;
 
-DBReadConnection::getInstance();
 
-DBWriteConnection::getInstance();
+class Dog {
+    public function __construct()
+    {
+        var_dump("Dog Registry");
+    }
+
+    public function Bark() {
+        var_dump("Woof!");
+    }
+
+    public function __destruct()
+    {
+        // TODO: Implement __destruct() method.
+        var_dump("Dog Destrucy!");
+    }
+}
+
+class Cat {
+    public function __construct()
+    {
+        var_dump("Cat Registry");
+    }
+
+    public function __destruct()
+    {
+        // TODO: Implement __destruct() method.
+        var_dump("Cat Destrucy!");
+    }
+}
+
+$dog = new Dog();
+$cat = new Cat();
+
+Application::add($dog);
+Application::add(DBReadConnection::getInstance());
+Application::add($cat);
+
+$aung = Application::get("dog");
+$aung->bark();
+
+$aung->bark();
+
+
+
+
+
+
+
+
+// DBReadConnection::getInstance();
+
+// DBWriteConnection::getInstance();
 
 //$student = DB::table("students")->where("name", "Thiha")->get();
 //
